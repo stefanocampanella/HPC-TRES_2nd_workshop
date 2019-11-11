@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Development of a High Performance Hydrological Model</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+          <section>
+            <h1> Development of a High Performance Hydrological Model </h1>
+          </section>
+          <section>
+            <h3> Development of a High Performance Hydrological Model </h3>
+            <h4> Stefano Campanella </h4>
+            <p>
+              <img class="plain" src="images/mhpc.png" height="80px">
+              <img class="plain" src="images/sissa.png" height="80px">
+              <img class="plain" src="images/ictp.jpg" height="80px">
+            </p>
+            <p>
+              <img class="plain" src="images/hpctres.png" height="80px">
+              <img class="plain" src="images/ogs.png" height="80px">
+              <img class="plain" src="images/eurac.png" height="80px">
+            </p>
+          </section>
+        </section>
+        <section>
+          <h2> The Plan: </h2> 
+          <p> The Five Ws (and the How) </p>
+        </section>
+        <section>
+          <section>
+            <h3> Who? </h3>
+          </section>
+          <!--
+          <section>
+            <ul> 
+              <li> I am a graduate in theoretical physics. </li>
+              <li> I worked for a small period as a developer (embedded systems) </li>
+              <li> I was also a substitute physics teacher! </li>
+              <li> more to the point, I long had an interest in scientific computing </li>
+            </ul>
+          </section>
+          -->
+          <section>
+            <h4> Background: Theoretical Physics </h4>
+            <p> I graduated with a thesis in HEP (phenomenology, hadron spectroscopy) at the University of Bari </p>
+          </section>
+          <section>
+            <h4> Embedded System Developer </h4>
+            <div class="fragment">
+              <p> Embedded Systems ≈ HPC </p>
+              <p> <small> knowledge of the hardware, limited resource and relevance of computational time </small> </p>
+            </div>
+
+            <div class="fragment"> 
+              <p> Embedded Systems ≠ HPC </p>
+              <p> <small> numerical algorithms, open-source development environment and higher level languages </small> </p>
+            </div>
+          </section>
+          <section>
+            <h4> Substitute Teacher (Phys & Math) </h4>
+            <p>Funny enough, thanks to a script:</p>
+            <pre> <code data-trim>
+              # Sending MADs (Messa A Disposizione)
+              for indx, s in schools.iterrows():
+                  print("Sending to {}, {}".format(s.Istituto, s.Comune))
+                  code = indx.lower()
+                  send_email(code, "pec")
+            </code> </pre>
+            <small> (You can find the whole script <a href="https://gist.github.com/stefanocampanella/de2b016db21ca933c2c601568c725438">here</a>) </small>
+            <!-- <script src="https://gist.github.com/stefanocampanella/de2b016db21ca933c2c601568c725438.js"></script> -->
+          </section>
+          <section>
+            <h4> More to the point </h4>
+            <p> Long interest in OSS and CS (ex. functional programming languages)</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> What? </h3>
+          </section>
+          <section>
+            <ul> 
+              <li> I got a HPC-TRES fellowship </li>
+              <li> I am now a student of the MHPC </li>
+              <li> I will work on GEOtop </li>
+            </ul>
+          </section>
+          <section>
+            <p> The Master in High Performance Computing (MHPC, SISSA &amp ICTP) is a degree program 
+            that prepares students for careers in the fast-growing field of HPC </p>
+          </section>
+          <section>
+            <p> GEOtop is a distributed model of the mass and energy 
+            balance of the hydrological cycle<p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> When? </h3>
+          </section>
+          <section>
+            <ul> 
+              <li> The MHPC lectures will last until may (approx) </li>
+              <li> Then I will work on my thesis on GEOtop </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> Where? </h3>
+          </section>
+          <section>
+            <p> Trieste (SISSA and ICTP) and Bolzano (EURAC) </p>
+          </section>
+          <section>
+            <p> The EURAC is a private research institute based in Bozen, 
+            with a strong focus on humanities and sciences related to the alpine environment </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> Why? </h3>
+          </section>
+          <section>
+            <p> GEOtop codebase and documentation have several issues (not uncommon in scientific software packages)</p>
+            <p class="fragment"> Scientifically advanced, but suffering from a big technological debt and poor implementation choices </p>
+          </section>
+          <section>
+            <h4> What HPC means for GEOtop? </h4>
+            <p class="fragment step-fade-in-then-out"> High Performance Computing </p>
+            <p class="fragment step-fade-in-then-out"> High <strike>Performance</strike> Computing </p>
+            <p class="fragment step-fade-in-then-out"> High Productivity Computing </p>
+          </section>
+          <section>
+            <p> <small> So the title of this presentation should really be: </small> </p>
+            <h1> Development of a High Productivity Hydrological Model </h1>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> How? </h3>
+          </section>
+          <!--
+          <section>
+            <ul>
+              <li class="fragment">Refactoring? </li>
+              <li class="fragment">Reengineering? </li>
+              <li class="fragment">Rewriting? </li>
+            </ul>
+          </section>
+          -->
+          <section>
+            <h4> Refactoring? </h4>
+            <p> See previous talk... </p>
+          </section>
+          <section>
+            <h4> Reengineering? </h4>
+            <ul>
+              <li class"fragment">Replacing custom linear algebra routines with BLAS/LAPACK: multithreading for free</li>
+              <li class"fragment">Removing useless IO code</li>
+              <li class"fragment">Modularizing the codebase</li>
+            </ul>
+          </section>
+          <section>
+            <h4> Rewriting? </h4>
+            <p> Julia is a good candidate </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3> Julia in 5 Slides </h3>
+          </section>
+          <section>
+            <h4> The 2 Language Problem </h3>
+            <img class="plain" src="images/language_spectrum.png" style="background: #191919" >
+          </section>
+          <section>
+            <h4> Some Microbenchmaks </h4>
+            <img class="plain" src="images/benchmarks.svg" style="background: white">
+          </section>
+          <section>
+            <h4> JIT Compilation &amp Dynamic Multiple Dispatch </h3>
+          </section>
+          <section>
+            <h4> Utilities for Scientific Computing </h3>
+          </section>
+          <section>
+            <h4> "No Boilerplate" Philosophy </h4>
+          </section>
+        </section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+        //// The "normal" size of the presentation, aspect ratio will be preserved
+        //// when the presentation is scaled to fit different resolutions. Can be
+        //// specified using percentage units.
+        //width: 960,
+        //height: 700,
+
+        //// Factor of the display size that should remain empty around the content
+        //margin: 0.1,
+
+        //// Bounds for smallest/largest possible scale to apply to content
+        //minScale: 0.2,
+        //maxScale: 1.5
+			});
+		</script>
+	</body>
+</html>
