@@ -46,8 +46,8 @@
           </section>
         </section>
         <section>
-          <h4> The Plan for this Presentation </h4> 
-          <p> The Five Ws and the How </p>
+          <h4> The Goal: Introduce me &amp the project </h4> 
+          <p> The Plan: The Five Ws and the How </p>
         </section>
         <section>
           <section>
@@ -109,7 +109,7 @@
           </section>
           <section>
             <h4> MHPC </h4>
-            <p> a degree program that prepares students for careers 
+            <p> a program that prepares students for careers 
             in the fast-growing field of HPC </p>
           </section>
           <section>
@@ -126,7 +126,7 @@
               <li> Flood and drought forecasting </li>
               <li> Water resource management </li>
               <li> Agricultural productivity forecasting </li>
-              <li> Climate assestment studies </li>
+              <li> Climate assessment studies </li>
             </ul>
           </section>
         </section>
@@ -136,7 +136,7 @@
           </section>
           <section>
             <ul> 
-              <li> The MHPC lectures will last until may (approx) </li>
+              <li> The MHPC lectures will last until june (approx) </li>
               <li> Then I will work on my thesis on GEOtop </li>
             </ul>
           </section>
@@ -158,13 +158,15 @@
             <h3> Why? </h3>
           </section>
           <section>
-            <p> Scientifically advanced, but: <p>
-            <ul> 
-              <li> big technological debt </li>
-              <li> poor implementation choices </li>
+            <p> GEOtop, scientifically advanced, but: </p>
+            <ul>
+              <li> poor performance </li>
+              <li> instability </li>
+              <li> IO management </li>
+            </ul>
           </section>
           <section>
-            <p> <b> NEEDSFIX: </b> codebase &amp documentation </p>
+            <p>  codebase &amp documentation <b> need a fix </b> </p>
             <p> <small> (not uncommon among scientific software packages) </small> </p>
           </section>
           <section>
@@ -199,6 +201,13 @@
           <section>
             <h4> Reengineering? </h4>
             <ul>
+              <li class="fragment"> Integration with climate models: IO management </li>
+              <li class="fragment"> Simulation of larger basins: performance optimizations </li>
+            </ul>
+          </section>
+          <section>
+            <p> moreover: </p>
+            <ul>
               <li class="fragment">Replacing custom linear algebra routines with BLAS/LAPACK: multithreading for free</li>
               <li class="fragment">Removing useless IO code</li>
               <li class="fragment">Modularizing the codebase</li>
@@ -212,19 +221,19 @@
         </section>
         <section>
           <section>
-            <h3> Julia in (almost) 5 Slides </h3>
+            <h3> Julia in 3 Slides </h3>
           </section>
           <section>
             <h4> The 2 Language Problem </h3>
             <img class="plain" src="images/language_spectrum.png">
           </section>
           <section>
-            <h4> Julia: Some Microbenchmaks </h4>
+            <h4> Julia: Some Microbenchmarks </h4>
             <img class="plain" src="images/benchmarks.svg">
           </section>
           <section>
             <h4> JIT Compilation &amp Dynamic Multiple Dispatch </h3>
-            <pre class="julia"> <code data-trim>
+            <pre> <code data-trim>
               julia> methods(sin)
               # 12 methods for generic function "sin":
               [1] sin(x::BigFloat) in Base.MPFR at mpfr.jl:743
@@ -241,6 +250,7 @@
               [12] sin(A::AbstractArray{#s617,2} where #s617<:Complex) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/dense.jl:793
             </code> </pre>
           </section>
+          <!--
           <section>
             <h4> Utilities for Scientific Computing </h3>
             <pre class="julia"> <code data-trim>
@@ -295,6 +305,7 @@
               c = Array(d_c)
             </code> </pre>
           </section>
+          -->
         </section>
         <section>
           <h3> ACKNOWLEDGMENTS </h3>
