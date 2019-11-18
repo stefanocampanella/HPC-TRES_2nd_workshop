@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -32,15 +32,16 @@
           <section>
             <h3> Development of a High Performance Hydrological Model </h3>
             <h4> Stefano Campanella </h4>
+            <p> Giacomo Bertoldi, Alberto Sartori, Stefano Cozzini </p>
             <p>
-              <img class="plain" src="images/mhpc.png" height="80px">
-              <img class="plain" src="images/sissa.png" height="80px">
-              <img class="plain" src="images/ictp.jpg" height="80px">
+              <img class="plain" src="images/mhpc.jpg" height="100px">
+              <img class="plain" src="images/hpctres.png" height="100px">
             </p>
             <p>
-              <img class="plain" src="images/hpctres.png" height="80px">
-              <img class="plain" src="images/ogs.png" height="80px">
-              <img class="plain" src="images/eurac.png" height="80px">
+              <img class="plain" src="images/sissa.png" height="100px">
+              <img class="plain" src="images/ictp.jpg" height="100px">
+              <img class="plain" src="images/ogs.png" height="100px">
+              <img class="plain" src="images/eurac.png" height="100px">
             </p>
           </section>
         </section>
@@ -82,7 +83,7 @@
             <h4> Substitute Teacher (Phys & Math) </h4>
             <p>Funny enough, thanks to a script:</p>
             <pre> <code data-trim>
-              # Sending MADs (Messa A Disposizione)
+              # Sending MADs with Python! 
               for indx, s in schools.iterrows():
                   print("Sending to {}, {}".format(s.Istituto, s.Comune))
                   code = indx.lower()
@@ -92,8 +93,7 @@
             <!-- <script src="https://gist.github.com/stefanocampanella/de2b016db21ca933c2c601568c725438.js"></script> -->
           </section>
           <section>
-            <h4> More to the point </h4>
-            <p> Long interest in OSS and CS (ex. functional programming languages)</p>
+            <p> More to the point, long interest in OSS and CS </p>
           </section>
         </section>
         <section>
@@ -108,12 +108,26 @@
             </ul>
           </section>
           <section>
-            <p> The Master in High Performance Computing (MHPC, SISSA &amp ICTP) is a degree program 
-            that prepares students for careers in the fast-growing field of HPC </p>
+            <h4> MHPC </h4>
+            <p> a degree program that prepares students for careers 
+            in the fast-growing field of HPC </p>
           </section>
           <section>
+            <h4> GEOtop </h4>
+            <p>  an integrated hydrological model that simulates 
+            the heat and water budgets at and below the soil surface </p>
+            <!--
             <p> GEOtop is a distributed model of the mass and energy 
             balance of the hydrological cycle<p>
+            -->
+          </section>
+          <section>
+            <ul>
+              <li> Flood and drought forecasting </li>
+              <li> Water resource management </li>
+              <li> Agricultural productivity forecasting </li>
+              <li> Climate assestment studies </li>
+            </ul>
           </section>
         </section>
         <section>
@@ -132,10 +146,11 @@
             <h3> Where? </h3>
           </section>
           <section>
-            <p> Trieste (SISSA and ICTP) and Bolzano (EURAC) </p>
+            <p> Trieste (SISSA and ICTP) and Bolzano (Eurac) </p>
           </section>
           <section>
-            <p> The EURAC is a private research institute based in Bolzano and with a strong focus on the alpine environment </p>
+            <h4> Eurac Research </h4>
+            <p> a private research institute based in Bolzano and with a strong focus on the alpine environment </p>
           </section>
         </section>
         <section>
@@ -143,11 +158,26 @@
             <h3> Why? </h3>
           </section>
           <section>
-            <p> GEOtop codebase and documentation have several issues (not uncommon in scientific software packages)</p>
-            <p class="fragment"> <b> NEEDSFIX: </b> Scientifically advanced, but it suffers from a big technological debt and poor implementation choices </p>
+            <p> Scientifically advanced, but: <p>
+            <ul> 
+              <li> big technological debt </li>
+              <li> poor implementation choices </li>
           </section>
           <section>
-            <h4> What HPC means for GEOtop? </h4>
+            <p> <b> NEEDSFIX: </b> codebase &amp documentation </p>
+            <p> <small> (not uncommon among scientific software packages) </small> </p>
+          </section>
+          <section>
+            <h4> The Aim </h4>
+            <ul>
+              <li> ease further development </li>
+              <li> increase usability </li>
+              <li> integration with other packages and pre, post-processing tools </li>
+              <li> better performance </li>
+            </ul>
+          </section>
+          <section>
+            <h4> What HPC really means for GEOtop? </h4>
             <p class="fragment step-fade-in-then-out"> High Performance Computing </p>
             <p class="fragment step-fade-in-then-out"> High <strike>Performance</strike> Computing </p>
             <p class="fragment step-fade-in-then-out"> High Productivity Computing </p>
@@ -161,53 +191,114 @@
           <section>
             <h3> How? </h3>
           </section>
-          <!--
-          <section>
-            <ul>
-              <li class="fragment">Refactoring? </li>
-              <li class="fragment">Reengineering? </li>
-              <li class="fragment">Rewriting? </li>
-            </ul>
-          </section>
-          -->
           <section>
             <h4> Refactoring? </h4>
-            <p> See previous talk... </p>
+            <p class="fragment"> See previous talk... </p>
           </section>
           <section>
             <h4> Reengineering? </h4>
             <ul>
-              <li class"fragment">Replacing custom linear algebra routines with BLAS/LAPACK: multithreading for free</li>
-              <li class"fragment">Removing useless IO code</li>
-              <li class"fragment">Modularizing the codebase</li>
+              <li class="fragment">Replacing custom linear algebra routines with BLAS/LAPACK: multithreading for free</li>
+              <li class="fragment">Removing useless IO code</li>
+              <li class="fragment">Modularizing the codebase</li>
             </ul>
           </section>
           <section>
             <h4> Rewriting? </h4>
-            <p> Julia is a good candidate </p>
+            <p class="fragment"> GEOtop as library? </p> 
+            <p class="fragment"> PyGEOtop? GEOtop.jl? </p>
           </section>
         </section>
         <section>
           <section>
-            <h3> Julia in 5 Slides </h3>
+            <h3> Julia in (almost) 5 Slides </h3>
           </section>
           <section>
             <h4> The 2 Language Problem </h3>
-            <img class="plain" src="images/language_spectrum.png" style="background: #191919" >
+            <img class="plain" src="images/language_spectrum.png">
           </section>
           <section>
-            <h4> Some Microbenchmaks </h4>
-            <img class="plain" src="images/benchmarks.svg" style="background: white">
+            <h4> Julia: Some Microbenchmaks </h4>
+            <img class="plain" src="images/benchmarks.svg">
           </section>
           <section>
             <h4> JIT Compilation &amp Dynamic Multiple Dispatch </h3>
+            <pre class="julia"> <code data-trim>
+              julia> methods(sin)
+              # 12 methods for generic function "sin":
+              [1] sin(x::BigFloat) in Base.MPFR at mpfr.jl:743
+              [2] sin(::Missing) in Base.Math at math.jl:1072
+              [3] sin(a::Complex{Float16}) in Base.Math at math.jl:1020
+              [4] sin(a::Float16) in Base.Math at math.jl:1019
+              [5] sin(z::Complex{T}) where T in Base at complex.jl:796
+              [6] sin(x::T) where T<:Union{Float32, Float64} in Base.Math at special/trig.jl:30
+              [7] sin(x::Real) in Base.Math at special/trig.jl:53
+              [8] sin(A::LinearAlgebra.Hermitian{#s616,S} where S<:(AbstractArray{#s617,2} where #s617<:#s616) where #s616<:Complex) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/symmetric.jl:759
+              [9] sin(A::Union{LinearAlgebra.Hermitian{#s617,S}, LinearAlgebra.Symmetric{#s617,S}} where S where #s617<:Real) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/symmetric.jl:755
+              [10] sin(D::LinearAlgebra.Diagonal) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/diagonal.jl:468
+              [11] sin(A::AbstractArray{#s617,2} where #s617<:Real) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/dense.jl:786
+              [12] sin(A::AbstractArray{#s617,2} where #s617<:Complex) in LinearAlgebra at /build/julia/src/julia-1.2.0/usr/share/julia/stdlib/v1.2/LinearAlgebra/src/dense.jl:793
+            </code> </pre>
           </section>
           <section>
             <h4> Utilities for Scientific Computing </h3>
+            <pre class="julia"> <code data-trim>
+              using FFTW
+
+              fft([0; 1; 2; 1])
+              #4-element Array{Complex{Float64},1}:
+              #4.0 + 0.0im
+              #-2.0 + 0.0im
+              #0.0 + 0.0im
+              #-2.0 + 0.0im
+            </code> </pre>
           </section>
           <section>
             <h4> "No Boilerplate" Philosophy </h4>
+            <pre class="julia"> <code data-trim>
+              function getenv(var::AbstractString)
+                  val = ccall((:getenv, "libc"),
+                              Cstring, (Cstring,), var)
+                  if val == C_NULL
+                      error("getenv: undefined variable: ", var)
+                  end
+                  unsafe_string(val)
+              end
+
+              getenv("SHELL") # "/bin/bash"
+            </code> </pre>
           </section>
+          <section>
+            <h4> Parallel and Heterogeneous Computing </h4>
+            <pre class="julia"> <code data-trim>
+              using CUDAdrv, CUDAnative
+
+              function kernel_vadd(a, b, c)
+                  i = threadIdx().x
+                  c[i] = a[i] + b[i]
+                  return
+              end
+
+              # generate some data
+              len = 512
+              a = rand(Int, len)
+              b = rand(Int, len)
+
+              # allocate & upload to the GPU
+              d_a = CuArray(a)
+              d_b = CuArray(b)
+              d_c = similar(d_a)
+
+              # execute and fetch results
+              @cuda (1,len) kernel_vadd(d_a, d_b, d_c)
+              c = Array(d_c)
+            </code> </pre>
+          </section>
+        </section>
+        <section>
+          <h3> ACKNOWLEDGMENTS </h3>
+          <p> The research reported in this work will be supported 
+          by OGS and CINECA under HPC-TRES program award number 2019-33 </p>
         </section>
 			</div>
 		</div>
