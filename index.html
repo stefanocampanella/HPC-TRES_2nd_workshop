@@ -188,7 +188,7 @@
           </section>
           <section>
             <h4> What HPC really means for GEOtop? </h4>
-            <!-- <p class="fragment step-fade-in-then-out"> High Performance Computing </p> -->
+            <p class="fragment step-fade-in-then-out"> High Performance Computing </p>
             <p class="fragment step-fade-in-then-out"> High <strike>Performance</strike> Computing </p>
             <p class="fragment step-fade-in-then-out"> High Productivity Computing </p>
           </section>
@@ -242,8 +242,8 @@
           </section>
           <section>
             <h4> JIT Compilation &amp Dynamic Multiple Dispatch </h3>
-            <pre> <code data-trim>
-              methods(sin) # ex. sin(x), x = 1, 3.14, 1 + 2im, [1 2; 2 1]
+            <pre class="julia"> <code data-trim>
+              methods(sin) # ex. sin(x), x = 1, 3.14, 1 + 2im, [1 2; 2 1]...
               # 12 methods for generic function "sin":
               [1] sin(x::BigFloat) in Base.MPFR at mpfr.jl:743
               [2] sin(::Missing) in Base.Math at math.jl:1072
@@ -333,7 +333,7 @@
                 end
               end
 
-              @time sin(3.14) # output: elapsed time ...
+              @time sin(3.14) # output: elapsed time 0.000002 seconds
             </code> </pre>
           </section>
         </section>
